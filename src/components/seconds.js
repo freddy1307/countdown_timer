@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
 
-function Seconds(){
+function Seconds({ setAppSeconds, stopProcess }){
 
-    const [minute, setMinute] = useState(59);
+    const [seconds, setSeconds] = useState(59);
 
     useEffect(() => {
+      if(stopProcess){
       setTimeout(() =>{
-        if(minute === 0){
-          setMinute(59)
+        if(seconds === 0){
+          setSeconds(59);
+          setAppSeconds(59);
         }else{
-          setMinute(minute - 1)
+          setSeconds(seconds - 1);
+          setAppSeconds(seconds - 1);
         }
-
-      },100);
-    }, [minute]);
+      },1000);
+      }else{
+        setSeconds(0)
+      }
+    }, [seconds]);
 
     return(
-      <div className="card w-50 text-center" style={{width: "10rem;"}}>
+      <div className="card h-50 text-center">
         <div className="card-body">
-          <h5 className="card-title">{ minute }</h5>
+          <h5 className="card-title">{ seconds }</h5>
           <h6 className="card-subtitle mb-2 text-muted">Seconds</h6>
         </div>
       </div>
