@@ -14,4 +14,4 @@ function Minutes(){
 }
 
 
-export default Minutes;
+export default Minutes;W
